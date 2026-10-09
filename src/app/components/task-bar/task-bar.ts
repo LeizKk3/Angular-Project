@@ -26,6 +26,7 @@ export class TaskBar {
   ]
 
   icons_length: number = this.icons.length - 1;
+  warning: string = "";
 
   tasks: { nome: string; description: string; date: string; icon: number; important: boolean }[] = [];
 
@@ -37,12 +38,25 @@ export class TaskBar {
 
 
   adicionarTask() {
-    this.tasks.push({
-      nome: this.nomeInput,
-      description: this.descriptionInput,
-      date: this.dataInput,
-      icon: this.iconInput,
-      important: this.importantInput
-    });
+
+    if (this.nomeInput.length > 0 &&
+      this.dataInput.length > 0
+    ) {
+      this.tasks.push({
+        nome: this.nomeInput,
+        description: this.descriptionInput,
+        date: this.dataInput,
+        icon: this.iconInput,
+        important: this.importantInput
+      });
+      this.nomeInput = "";
+      this.descriptionInput = "";
+      this.dataInput = "";
+      this.iconInput = 0;
+      this.importantInput = false;
+      this.warning = "";
+    } else {
+      this.warning = "*Preencha os campos obrigatórios!*";
+    }
   }
 }

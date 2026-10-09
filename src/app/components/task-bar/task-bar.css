@@ -141,7 +141,6 @@ label {
 
 .create {
     background: #546E87;
-    margin-top: 2em;
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -188,6 +187,8 @@ label {
     transition:
         background-color 0.2s,
         transform 0.2s;
+    animation: aparecer 0.8s ease forwards;
+    overflow: hidden;
 }
 
 .task-container:has(*:hover) {
@@ -297,4 +298,20 @@ label {
 .delete img {
     width: 40px;
     height: 40px;
+}
+
+.aviso {
+    color: red;
+    font-family: "Inter", sans-serif;
+}
+
+
+@keyframes aparecer {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
 }

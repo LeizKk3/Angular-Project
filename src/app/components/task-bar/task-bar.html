@@ -3,6 +3,7 @@
         <h1 class="title">Nova Tarefa</h1>
         <div class="taskManager-form">
             <div class="taskAttributes">
+
                 <div class="taskAttributes-main">
                     <div class="input">
                         <label for="name">Nome da Tarefa: </label>
@@ -37,7 +38,9 @@
                 </div>
 
             </div>
+            <p class="aviso">{{warning}}</p>
             <button class="create" (click)="adicionarTask()">Criar</button>
+
         </div>
     </div>
 
