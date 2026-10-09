@@ -1,0 +1,72 @@
+<div class="content">
+    <div class="taskManager-container">
+        <h1 class="title">Nova Tarefa</h1>
+        <div class="taskManager-form">
+            <div class="taskAttributes">
+                <div class="taskAttributes-main">
+                    <div class="input">
+                        <label for="name">Nome da Tarefa: </label>
+                        <input id="name" type="text" [(ngModel)]="nomeInput">
+                    </div>
+
+                    <div class="date-icon-container">
+                        <div class="input">
+                            <label for="date">Data Limite: </label>
+                            <input id="date" type="date" [(ngModel)]="dataInput">
+                        </div>
+
+                        <div class="input">
+                            <label for="icone">Icone: </label>
+                            <div class="icon-display-container">
+                                <div class="icon-display-input">
+                                    <img [src]="icons[iconInput]" alt="teste">
+                                </div>
+                                <input min="0" [max]="icons_length" id="icone" type="number" [(ngModel)]="iconInput">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-checkbox">
+                        <input id="important" type="checkbox" [(ngModel)]="importantInput">
+                        <label for="important">Importante </label>
+                    </div>
+                </div>
+                <div class="input-description-container">
+                    <label for="description">Descrição: </label>
+                    <textarea id="description" placeholder="Descrição da Tarefa" type="text"
+                        [(ngModel)]="descriptionInput"></textarea>
+                </div>
+
+            </div>
+            <button class="create" (click)="adicionarTask()">Criar</button>
+        </div>
+    </div>
+
+    <div class="taskManager-container">
+        <h1 class="title">Lista de Tarefas</h1>
+        <div class="taskManager-form">
+            @for (item of tasks; track item.nome) {
+            <div class="task-container" [class.important]="item.important">
+                <div class="task-content">
+                    <div class="task-icon">
+                        <img [src]="icons[item.icon]" alt="teste">
+                    </div>
+
+                    <div class="task-info">
+                        <div class="title-task-container">
+                            <h3 class="title-task">{{ item.nome }}</h3>
+                            <p class="info">{{ item.date }}</p>
+                        </div>
+                        <p class="info">{{ item.description }}</p>
+
+                    </div>
+
+                </div>
+                <div class="buttons-task">
+                    <button class="delete"><img src="../midia/img/trash.svg"></button>
+                    <button class="concluir">Concluir</button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
